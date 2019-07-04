@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Thu Jul  4 13:50:06 2019
+Created on Thu Jul  4 17:55:55 2019
 
 @author: adeindra93
 """
@@ -35,28 +35,18 @@ all(isinstance(column, str) for column in df_can.columns)
 #mengubah index menjadi country
 df_can.set_index('Country', inplace=True)
 
-years = list(map(str, range(1980,2014)))
+#years = list(map(str, range(1980,2014)))
 
-#melakukan sort data terbanyak pada Total
-df_can.sort_values(['Total'], ascending=False, axis=0, inplace=True)
+#df_top5 = df_can.sort_values(['Total'], ascending=False, axis=0, inplace=True)
+#df_top5 = df_can.head()
+#df_top5 = df_top5[years].transpose()
 
-#top 5 sort
-df_top5 = df_can.head()
+count, bin_edges = np.histogram(df_can['2013'])
 
-#mengubah tahun di transpose menjadi colum utama, country jadi label
-df_top5 = df_top5[years].transpose()
+df_can['2013'].plot(kind='hist', figsize=(8,5), xticks=bin_edges)
 
-df_top5.index = df_top5.index.map(int)
-df_top5.plot(kind='Area', 
-             alpha=0.3, #0-1, default value a = 0.5
-             stacked=False,
-             figsize=(20,10),
-             )
-plt.title('Immigration Trend of Top 5 Countries')
-plt.ylabel('Number of Immigrants')
-plt.xlabel('Years')
+plt.title('Histogram of Immigration from 195 Countries in 2013') # add a title to the histogram
+plt.ylabel('Number of Countries') # add y-label
+plt.xlabel('Number of Immigrants') # add x-label
 
 plt.show()
-
-
-

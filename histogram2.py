@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Thu Jul  4 13:50:06 2019
+Created on Thu Jul  4 18:38:20 2019
 
 @author: adeindra93
 """
@@ -37,26 +37,20 @@ df_can.set_index('Country', inplace=True)
 
 years = list(map(str, range(1980,2014)))
 
-#melakukan sort data terbanyak pada Total
-df_can.sort_values(['Total'], ascending=False, axis=0, inplace=True)
+df_dns = df_can.loc[['Denmark','Norway', 'Sweden'], years]
 
-#top 5 sort
-df_top5 = df_can.head()
+# generate histogram
+df_dns.plot.hist()
 
-#mengubah tahun di transpose menjadi colum utama, country jadi label
-df_top5 = df_top5[years].transpose()
+df_t = df_dns.transpose()
 
-df_top5.index = df_top5.index.map(int)
-df_top5.plot(kind='Area', 
-             alpha=0.3, #0-1, default value a = 0.5
-             stacked=False,
-             figsize=(20,10),
-             )
-plt.title('Immigration Trend of Top 5 Countries')
-plt.ylabel('Number of Immigrants')
-plt.xlabel('Years')
+#generete histogram
+df_t.plot(kind = 'hist', 
+          figsize = (10,6))
+
+plt.title('Histogram of Immigration from Denmark, Norway, and Sweden from 1980 - 2013')
+plt.ylabel('Number of Years')
+plt.xlabel('Number of Immigrants')
 
 plt.show()
-
-
 
