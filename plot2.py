@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Thu Jul  4 13:50:06 2019
+Created on Thu Jul  4 17:48:13 2019
 
 @author: adeindra93
 """
@@ -48,16 +48,12 @@ df_top5v2 = df_can.head()
 df_top5 = df_top5[years].transpose()
 
 df_top5.index = df_top5.index.map(int)
-df_top5.plot(kind='Area', 
-             alpha=0.3, #0-1, default value a = 0.5
-             stacked=False,
+ax = df_top5.plot(kind='area', 
+             alpha=0.35, #0-1, default value a = 0.5
              figsize=(20,10),
              )
-plt.title('Immigration Trend of Top 5 Countries')
-plt.ylabel('Number of Immigrants')
-plt.xlabel('Years')
+ax.set_title('Immigration Trend of Top 5 Countries')
+ax.set_ylabel('Number of Immigrants')
+ax.set_xlabel('Years')
 
 plt.show()
-
-
-
