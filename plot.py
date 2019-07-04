@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 
 mpl.style.use('ggplot') #optional: for ggplot-like style
 
-df_can = pd.read_excel('./dts-ml/Canada.xlsx', 
+df_can = pd.read_excel('./Canada.xlsx', 
                        sheet_name = 'Canada by Citizenship', 
                        skiprows = range(20), 
                        skipfooter = 2)
