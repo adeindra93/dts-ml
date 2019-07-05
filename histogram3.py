@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Thu Jul  4 18:38:20 2019
+Created on Fri Jul  5 09:43:13 2019
 
 @author: adeindra93
 """
@@ -37,31 +37,16 @@ df_can.set_index('Country', inplace=True)
 
 years = list(map(str, range(1980,2014)))
 
-df_dns = df_can.loc[['Denmark','Norway', 'Sweden'], years]
+#dataframe Iceland
+df_iceland = df_can.loc['Iceland', years]
 
-# generate histogram
-df_dns.plot.hist()
-
-df_t = df_dns.transpose()
-
-# let's get the x-tick values
-count, bin_edges = np.histogram(df_t, 15)
-xmin = bin_edges[0] - 10   #  first bin value is 31.0, adding buffer of 10 for aesthetic purposes 
-xmax = bin_edges[-1] + 10  #  last bin value is 308.0, adding buffer of 10 for aesthetic purposes
 
 #generete histogram
-df_t.plot(kind='hist', 
-          figsize=(10,6), 
-          bins=15, 
-          #alpha=0.6,
-          xticks=bin_edges, 
-          color=['coral','darkslateblue','mediumseagreen'], 
-          stacked=True,
-          xlim=(xmin, xmax))
+df_iceland.plot(kind='bar', 
+          figsize=(10,6))
 
 plt.title('Histogram of Immigration from Denmark, Norway, and Sweden from 1980 - 2013')
-plt.ylabel('Number of Years')
-plt.xlabel('Number of Immigrants')
+plt.ylabel('Icelandic Immigrants to Canada from 1980 to 2013')
+plt.xlabel('Year')
 
 plt.show()
-
