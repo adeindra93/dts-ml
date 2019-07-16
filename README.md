@@ -11,3 +11,6 @@ learn line plot, membuat grafik profit per-month
 
 # multiline_plot
 ![alt text](https://github.com/adeindra93/dts-ml/blob/master/sales_data_2.png)
+
+# scatter_plot
+![alt text](https://github.com/adeindra93/dts-ml/blob/master/toothpaste_data.png)
